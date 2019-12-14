@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="shortcut icon"
+        href="https://techstar-production.s3.amazonaws.com/employer/9b0bd12b-1db2-4978-8630-0a6831762ea6_Logo_Clicknext.jpg123.jpg" />
+</head>
+<body>
+    <div style="display: flex;">
+        <div style="margin-right: auto;margin-left: auto;">
+            <div>Input 1</div>
+            <div><input type="number" name="input1" id="input1"></div>
+        </div>
+    </div>
+    <div style="display: flex;"> 
+        <div style="margin-right: auto;margin-left: auto;">
+            <div>Input 2</div>
+            <div><input type="number" name="input2" id="input2"></div>
+        </div>
+    </div>
+    <div style="display: flex"> 
+        <div style="margin-right: auto;margin-left: auto;">
+            <button onclick="add()">บวก</button>
+        </div>
+    </div>
+    
+    <div style="display: flex"> 
+        <div style="margin-right: auto;margin-left: auto;">
+            <p>มีค่าเท่ากับ <span id="answer"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function add() { 
+            var a = parseFloat(document.querySelector('#input1').value)
+            var b = parseFloat(document.querySelector('#input2').value)
+            var answer = document.querySelector('#answer');
+
+            var total = a + b;
+            answer.innerHTML = total;
+         }
+    </script>
+</body>
+</html>
