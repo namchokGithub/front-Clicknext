@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10-salary</title>
+</head>
+
+<style>
+
+</style>
+
+<body>
+
+    <div style="display: flex;">
+        <div style="margin-left:auto;margin-right:auto;">
+            <input type="number" name="number" id="number" value="">
+            <button onclick="tax()">คำนวณภาษี</button>
+
+            <br><br><b>ผลการคำนวณ</b><br>
+            <span id="totalTax"></span>
+        </div>
+    </div>
+
+    <script>
+        function tax() {
+            var money = document.querySelector('#number').value
+            var span = document.querySelector('#totalTax');
+            var tax = [
+                { min: 0, max: 150000, percent: 0 }
+                , { min: 150000, max: 300000, percent: 0.05 }
+                , { min: 300000, max: 500000, percent: 0.1 }
+                , { min: 500000, max: 750000, percent: 0.15 }
+            ]
+            var tex = 0
+            oldMoney = money
+
+            for (i in tax) {
+                if (money == 0) break
+
+                if (money > (tax[i].max - tax[i].min)) {
+
+                    if(i==3){
+                        tex += ( money * tax[i].percent)
+                        money -= (tax[i].max - tax[i].min)
+                    }else{
+                        tex += ((tax[i].max - tax[i].min) * tax[i].percent)
+                        money -= (tax[i].max - tax[i].min)
+                    }
+
+                }else {
+                    tex += (money * tax[i].percent)
+                    money -= money
+                }
+
+                console.log('ภาษี ' + ((tax[i].max - tax[i].min) * tax[i].percent))
+                console.log('คงเหลือ ' + money)
+            }
+
+            span.innerHTML = tex
+        }
+    </script>
+</body>
+
+</html>
