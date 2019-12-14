@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02-salary</title>
+</head>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+        color: #000;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <table id="tableEmployee">
+        <thead>
+            <tr>
+                <th style="width: 10%;">ลำดับ</th>
+                <th>ชื่อ</th>
+                <th>เงินเดือน</th>
+                <th style="width: 20%;">ประกันสังคม</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        var employee = [
+            {
+                id: 1
+                , name: 'นาย A'
+                , salary: 9000
+            },
+            {
+                id: 2
+                , name: 'นาย B'
+                , salary: 12000
+            },
+            {
+                id: 3
+                , name: 'นาย C'
+                , salary: 15000
+            },
+            {
+                id: 4
+                , name: 'นาย D'
+                , salary: 18000
+            },
+            {
+                id: 5
+                , name: 'นาย E'
+                , salary: 21000
+            }
+        ]
+
+        var table = document.querySelector('#tableEmployee tbody')
+
+        function employeeShow() {
+            var total = 0
+            var tb = ''
+            for (i in employee) {
+
+                if(employee[i].salary<=15000){
+                    social = (employee[i].salary * 5) / 100
+                }else if(employee[i].salary>15000){
+                    social = (15000 * 5) / 100
+                }
+
+                tb += '<tr>'
+                tb += '<td style="text-align: center">'
+                tb += employee[i].id
+                tb += '</td>'
+                tb += '<td>'
+                tb += employee[i].name
+                tb += '</td>'
+                tb += '<td style="text-align: center">'
+                tb += employee[i].salary
+                tb += '</td>'
+                tb += '<td style="text-align: center">'
+                tb += social
+                tb += '</td>'
+                tb += '</tr>'
+                total += employee[i].salary
+            }
+
+            // ผลรวมทั้งหมด
+            tb += '<tr>'
+            tb += '<td colspan="2" style="text-align: right">รวมทั้งสิ้น</td>'
+            tb += `<td style="text-align: center">${total}</td>`
+            tb += `<td style="text-align: center"></td>`
+            tb += '</tr>'
+            table.innerHTML = tb
+        }
+
+    </script>
+
+    <script>
+        employeeShow()
+        calculateSalary()
+    </script>
+</body>
+
+</html>
